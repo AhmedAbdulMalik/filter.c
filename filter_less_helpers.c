@@ -15,7 +15,9 @@
 #define SEPIA_BLUE_1 0.272
 #define SEPIA_BLUE_2 0.534
 #define SEPIA_BLUE_3 0.131
-//dont ask why they work & who made them althought I am curious about it myself
+
+//dont ask why they work & who made them, although I am curious about it myself
+
 // Convert image to grayscale
 void grayscale(int height, int width, RGBTRIPLE image[height][width])
 {
@@ -25,8 +27,10 @@ void grayscale(int height, int width, RGBTRIPLE image[height][width])
         for (int j = 0; j < width; j++)
         {
             // store sum
+            /* why? why not just divide & add then assign, try it & compare the outputs, especially using check50 
+            i.e int avg=round(image[i][j].rgbtBlue + image[i][j].rgbtRed + image[i][j].rgbtGree/3.0);*/
             float sum = image[i][j].rgbtBlue + image[i][j].rgbtRed + image[i][j].rgbtGreen;
-            // using round \ here but can use ceil as well
+            // using round here but can use ceil as well
             int avg = (int) round(sum / 3.0);
             // update values and why not all in one line? well, deal with it!
             image[i][j].rgbtBlue = avg;
@@ -62,8 +66,8 @@ void sepia(int height, int width, RGBTRIPLE image[height][width])
             sepiaRed = (sepiaRed > 255) ? 255 : sepiaRed;
             sepiaGreen = (sepiaGreen > 255) ? 255 : sepiaGreen;
             sepiaBlue = (sepiaBlue > 255) ? 255 : sepiaBlue;
-          //if you don't understand them don't worry its just IF_ELSE less steps
-          // not ideal for 'production' level code
+          //if you don't understand them don't worry its just IF_ELSE with less steps
+          // not ideal for 'production' level code bc not everyone gets it ;)
 
             // updagting the values
             image[i][j].rgbtBlue = sepiaBlue;
